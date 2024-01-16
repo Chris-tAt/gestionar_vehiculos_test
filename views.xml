@@ -1,0 +1,89 @@
+<odoo>
+ <record id="view_diagnostic_form" model="ir.ui.view">
+    <field name="name">reception_car.diagnostic.form</field>
+    <field name="model">reception_car.diagnostic</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="date"/>
+                    <field name="responsible"/>
+                    <field name="area"/>
+                </group>
+                <group>
+                    <field name="services"/>
+                    <field name="code"/>
+                    <field name="comment"/>
+                </group>
+                <group>
+                    <field name="hours"/>
+                    <field name="to_quote"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_mileage_record_form" model="ir.ui.view">
+    <field name="name">reception_car.mileage_record.form</field>
+    <field name="model">reception_car.mileage_record</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="date"/>
+                    <field name="mileage"/>
+                    <field name="responsible"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <record id="view_vehicle_form" model="ir.ui.view">
+        <field name="name">reception_car.vehicle.form</field>
+        <field name="model">reception_car.vehicle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- Campos del cliente -->
+                    <group>
+                        <field name="client_name"/>
+                        <field name="phone"/>
+                        <field name="address"/>
+                        <field name="vin"/>
+                        <field name="quotation"/>
+                    </group>
+                    
+                    <!-- Campos del vehículo -->
+                    <group>
+                        <field name="model"/>
+                        <field name="plate"/>
+                        <field name="plate_expiry"/>
+                        <field name="brand"/>
+                        <field name="year"/>
+                        <field name="comments"/>
+                    </group>
+
+                    <!-- Pestañas para Diagnóstico y Registro de Kilometraje -->
+                    <notebook>
+    <page string="Diagnóstico" >
+        <field name="diagnostic_ids" widget="many2many_tags" options="{'no_create': True}" context="{'default_res_model': 'reception_car.vehicle', 'default_res_id': active_id}"/>
+    </page>
+    <page string="Registro de Kilometraje">
+        <field name="mileage_record_ids" widget="many2many_tags" options="{'no_create': True}" context="{'default_res_model': 'reception_car.vehicle', 'default_res_id': active_id}"/>
+    </page>
+</notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_Vehicle" model="ir.actions.act_window">
+    <field name="name">Lista de Registros</field>
+    <field name="res_model">reception_car.vehicle</field>
+    <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_todo" parent= "" action="gestionar_vehiculo.action_view_Vehicle"/>
+</odoo>

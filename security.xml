@@ -1,0 +1,29 @@
+<odoo>
+    <record id="model_acces_Vehicle" model="ir.model.access">
+        <field name="name">model.access_Vehicle</field>
+      <field name="model_id" ref="model_reception_car_vehicle"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_acces_Diagnostic" model="ir.model.access">
+        <field name="name">model.access_Diagnostic</field>
+      <field name="model_id" ref="model_reception_car_diagnostic"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_acces_MileageRecord" model="ir.model.access">
+        <field name="name">model.access_MileageRecord</field>
+      <field name="model_id" ref="model_reception_car_mileage_record"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo>
